@@ -3,6 +3,7 @@
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\PhishingController;
 use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\RecipientGroupController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -31,6 +32,7 @@ Route::middleware(['web'])->group(function () {
 
     Route::resource('campaigns', CampaignController::class);
     Route::resource('templates', TemplateController::class);
+    Route::resource('groups', RecipientGroupController::class);
 });
 
 // Phishing Routes (Public)

@@ -18,8 +18,15 @@ use Inertia\Inertia;
 |
 */
 
+Route::get('/login', function () {
+    return Inertia::render('Auth/Login');
+})->name('login');
+
+Route::get('/login/oauth/{provider}', [AppHttpControllersAuthController::class, 'redirect'])->name('login.oauth');
+Route::get('/login/oauth/{provider}/callback', [AppHttpControllersAuthController::class, 'callback']);
+
 Route::get('/', function () {
-    return redirect()->route('dashboard');
+    return redirect()->route('login');
 });
 
 // Admin / Dashboard Routes
@@ -33,6 +40,7 @@ Route::middleware(['web'])->group(function () {
     Route::resource('campaigns', CampaignController::class);
     Route::resource('templates', TemplateController::class);
     Route::resource('groups', RecipientGroupController::class);
+    Route::resource('clients', App\Http\Controllers\ClientController::class)->middleware(App\Http\Middleware\EnsureUserIsAdmin::class);
 });
 
 // Phishing Routes (Public)
@@ -43,7 +51,7 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
     if ($request->has('rid')) {
         return app(PhishingController::class)->landing($request);
     }
-    return redirect()->route('dashboard');
+    return redirect()->route('login');
 });
 
 Route::post('/', [PhishingController::class, 'submit'])->name('phishing.submit');

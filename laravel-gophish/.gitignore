@@ -7,3 +7,13 @@
 .env
 /server*.pid
 /server*.log
+/storage/framework/cache/data/
+/storage/framework/sessions/
+/storage/framework/views/
+/storage/framework/testing/
+/storage/logs/
+/vendor/
+/node_modules/
+/public/build/
+.env
+*.log

@@ -18,8 +18,15 @@
     },
     "dependencies": {
         "@inertiajs/vue3": "^2.3.15",
+        "@primevue/themes": "^4.5.4",
+        "@types/node": "^25.3.0",
         "@vitejs/plugin-vue": "^6.0.4",
+        "primeicons": "^7.0.0",
+        "primevue": "^4.5.4",
+        "quill": "^2.0.3",
+        "typescript": "^5.9.3",
         "vue": "^3.5.28",
+        "vue-tsc": "^3.2.5",
         "ziggy-js": "^2.6.1"
     }
 }
